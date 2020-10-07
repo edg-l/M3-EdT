@@ -30,19 +30,40 @@ public class Krona {
 
         Scanner scanner = new Scanner(System.in);
 
+        ComprovacioRendiment comprovacioRendiment = null;
+
         while (running) {
             textFrame.print();
 
             System.out.print("Opció: ");
             int opcio = scanner.nextInt();
+            boolean waitForInput = false;
 
             switch (opcio) {
+                case 1:
+                    comprovacioRendiment = Waypoint.inicialitzarComprovacioRendiment();
+                    break;
+                case 2:
+                    Waypoint.comprovarRendimentInicialitzacio(50000, comprovacioRendiment);
+                    waitForInput = true;
+                    break;
                 case 50:
                     running = false;
                     break;
                 default:
                     System.out.println("Aquesta funcionalitat encara no esta implementada.");
+                    waitForInput = true;
             }
+
+            if(waitForInput) {
+                System.out.println("Presiona qualsevol tecla per continuar.");
+                try {
+                    System.in.read();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
         }
     }
 }
