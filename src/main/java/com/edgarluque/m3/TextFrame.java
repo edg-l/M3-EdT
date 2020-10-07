@@ -7,6 +7,9 @@ import java.util.List;
  * Class made to pretty print a text surrounded by a frame.
  */
 public class TextFrame {
+    /**
+     * Stores information for each line added.
+     */
     private class TextLine {
         private boolean centered;
         private String text;
@@ -69,8 +72,8 @@ public class TextFrame {
     }
 
     public TextFrame(int minFrameSize) {
+        this();
         this.minFrameSize = minFrameSize;
-        lines = new LinkedList<>();
     }
 
     public boolean addLine(String text, boolean centered) {
@@ -93,6 +96,7 @@ public class TextFrame {
     public String toString() {
         int maxWidth = minFrameSize;
 
+        // First pass to get the longest line.
         for(TextLine line: lines) {
             int length = line.getTextLength();
             if(length > maxWidth)
@@ -101,7 +105,6 @@ public class TextFrame {
 
         final StringBuilder sb = new StringBuilder();
 
-        // Set framewidth to max width + 2
         for(TextLine line: lines) {
             line.setFrameWidth(maxWidth + 4);
             sb.append(line.toString());
@@ -109,5 +112,9 @@ public class TextFrame {
         }
 
         return sb.toString();
+    }
+
+    public void print() {
+        System.out.println(toString());
     }
 }

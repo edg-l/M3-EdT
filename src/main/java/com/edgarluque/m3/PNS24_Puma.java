@@ -1,5 +1,7 @@
 package com.edgarluque.m3;
 
+import java.util.Scanner;
+
 /**
  * Hello world!
  *
@@ -26,6 +28,27 @@ public class PNS24_Puma
         textFrame.addLine("50. Tancar el sistema", false);
         textFrame.addEmptyLine();
         textFrame.addSeparator();
-        System.out.println(textFrame.toString());
+
+        Scanner scanner = new Scanner(System.in);
+
+        boolean running = true;
+
+        while (running) {
+            textFrame.print();
+
+            System.out.print("Opció: ");
+            int opcio = scanner.nextInt();
+
+            switch (opcio) {
+                case 1:
+                    Krona.run();
+                    break;
+                case 50:
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Aquesta funcionalitat encara no esta implementada.");
+            }
+        }
     }
 }
