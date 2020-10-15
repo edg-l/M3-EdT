@@ -9,32 +9,32 @@ import java.util.Scanner;
 public class PNS24_Puma
 {
     public static void main( String[] args ) {
-        TextFrame textFrame = new TextFrame();
-        textFrame.addTitle("Orbita 10", true);
-        textFrame.addEmptyLine();
-        textFrame.addLine("PNS-24 Puma" ,true);
-        textFrame.addEmptyLine();
-        textFrame.addSeparator();
-        textFrame.addLine("1. Sistema de navegació Krona", false);
-        textFrame.addLine("2. Sistema d'atac Orion", false);
-        textFrame.addLine("3. Sistema de defensa Sirena", false);
-        textFrame.addLine("4. Sistema de comunicacions Evkalipt", false);
-        textFrame.addLine("5. Sistema d'identificació Khom-Nikel", false);
-        textFrame.addLine("6. Sistema de visualització PPV", false);
-        textFrame.addLine("7. Sistema de grabació Kristall", false);
-        textFrame.addEmptyLine();
-        textFrame.addLine("10. Control de sondes Delta", false);
-        textFrame.addEmptyLine();
-        textFrame.addLine("50. Tancar el sistema", false);
-        textFrame.addEmptyLine();
-        textFrame.addSeparator();
+        MenuConstructorPantalla menu = new MenuConstructorPantalla();
+        menu.addTitle("Orbita 10", true);
+        menu.addEmptyLine();
+        menu.addLine("PNS-24 Puma" ,true);
+        menu.addEmptyLine();
+        menu.addSeparator();
+        menu.addLine("1. Sistema de navegació Krona", false);
+        menu.addLine("2. Sistema d'atac Orion", false);
+        menu.addLine("3. Sistema de defensa Sirena", false);
+        menu.addLine("4. Sistema de comunicacions Evkalipt", false);
+        menu.addLine("5. Sistema d'identificació Khom-Nikel", false);
+        menu.addLine("6. Sistema de visualització PPV", false);
+        menu.addLine("7. Sistema de grabació Kristall", false);
+        menu.addEmptyLine();
+        menu.addLine("10. Control de sondes Delta", false);
+        menu.addEmptyLine();
+        menu.addLine("50. Tancar el sistema", false);
+        menu.addEmptyLine();
+        menu.addSeparator();
 
         Scanner scanner = new Scanner(System.in);
 
         boolean running = true;
 
         while (running) {
-            textFrame.print();
+            menu.print();
 
             System.out.print("Opció: ");
             int opcio = scanner.nextInt();

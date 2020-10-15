@@ -3,10 +3,7 @@ package com.edgarluque.m3;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Class made to pretty print a text surrounded by a frame.
- */
-public class TextFrame {
+public class MenuConstructorPantalla {
     /**
      * Stores information for each line added.
      */
@@ -66,12 +63,12 @@ public class TextFrame {
     private List<TextLine> lines = null;
     private int minFrameSize;
 
-    public TextFrame() {
+    public MenuConstructorPantalla() {
         lines = new LinkedList<>();
         minFrameSize = 0;
     }
 
-    public TextFrame(int minFrameSize) {
+    public MenuConstructorPantalla(int minFrameSize) {
         this();
         this.minFrameSize = minFrameSize;
     }
