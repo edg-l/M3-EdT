@@ -1,4 +1,4 @@
-package com.edgarluque.m3;
+package com.edgarluque.m3.exercisis_list;
 
 import java.util.Scanner;
 

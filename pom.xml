@@ -53,7 +53,7 @@
           <configuration>
             <archive>
               <manifest>
-                <mainClass>com.edgarluque.m3.PNS24_Puma</mainClass>
+                <mainClass>com.edgarluque.m3.exercisis_list.PNS24_Puma</mainClass>
               </manifest>
             </archive>
           </configuration>
