@@ -44,7 +44,7 @@ public class Krona {
                     comprovacioRendiment = Waypoint.inicialitzarComprovacioRendiment();
                     break;
                 case 2:
-                    Waypoint.comprovarRendimentInicialitzacio(50000, comprovacioRendiment);
+                    Waypoint.comprovarRendimentInicialitzacio(10, comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 3:

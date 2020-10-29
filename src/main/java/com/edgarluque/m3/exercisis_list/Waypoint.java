@@ -3,6 +3,8 @@ package com.edgarluque.m3.exercisis_list;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Waypoint {
     public static ComprovacioRendiment inicialitzarComprovacioRendiment() {
@@ -148,10 +150,18 @@ public class Waypoint {
     }
 
     public static ComprovacioRendiment modificarWaypoints(ComprovacioRendiment comprovacioRendimentTmp) {
-        return new ComprovacioRendiment();
+        System.out.println("----Apartat 1-----");
+        List<Integer> idsPerArrayList = new ArrayList<>();
+        for(int i = 0, n = comprovacioRendimentTmp.llistaArrayList.size(); i < n; i++) {
+            idsPerArrayList.add(i);
+        }
+        System.out.println("S'ha inicialitzat idsPerArrayList amb " + comprovacioRendimentTmp.llistaArrayList.size() + " nombres.");
+        System.out.println("Primer valor te un: " + idsPerArrayList.get(0));
+        System.out.println("L'ultim valor te un: " + idsPerArrayList.get(idsPerArrayList.size() - 1));
+        return comprovacioRendimentTmp;
     }
 
     public static ComprovacioRendiment esborrarWaypoint(ComprovacioRendiment comprovacioRendimentTmp) {
-        return new ComprovacioRendiment();
+        return comprovacioRendimentTmp;
     }
 }
