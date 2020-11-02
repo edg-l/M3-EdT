@@ -1,4 +1,4 @@
-package com.edgarluque.m3.exercisis_list;
+package com.edgarluque.m3.exercisis;
 
 import java.util.Scanner;
 
@@ -44,11 +44,15 @@ public class Krona {
                     comprovacioRendiment = Waypoint.inicialitzarComprovacioRendiment();
                     break;
                 case 2:
-                    Waypoint.comprovarRendimentInicialitzacio(10, comprovacioRendiment);
+                    comprovacioRendiment = Waypoint.comprovarRendimentInicialitzacio(10, comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 3:
-                    Waypoint.comprovarRendimentInsercio(comprovacioRendiment);
+                    comprovacioRendiment = Waypoint.comprovarRendimentInsercio(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 4:
+                    comprovacioRendiment = Waypoint.modificarWaypoints(comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 50:

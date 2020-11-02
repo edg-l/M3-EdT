@@ -1,28 +1,27 @@
-package com.edgarluque.m3.exercisis_list;
+package com.edgarluque.m3.exercisis;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.util.ArrayList;
 
-public class WaypointDades {
+public class RutaDades {
     private int id;
     private String nom;
-    private int[] coordenades;
+    private ArrayList<Integer> waypoints;
     private boolean actiu;
-
     private LocalDateTime dataCreacio;
     private LocalDateTime dataAnulacio;
     private LocalDateTime dataModificacio;
 
-    public WaypointDades(int id,
-                         String nom,
-                         int[] coordenades,
-                         boolean actiu,
-                         LocalDateTime dataCreacio,
-                         LocalDateTime dataAnulacio,
-                         LocalDateTime dataModificacio) {
+    public RutaDades(int id,
+                     String nom,
+                     ArrayList<Integer> waypoints,
+                     boolean actiu,
+                     LocalDateTime dataCreacio,
+                     LocalDateTime dataAnulacio,
+                     LocalDateTime dataModificacio) {
         this.id = id;
         this.nom = nom;
-        this.coordenades = coordenades;
+        this.waypoints = waypoints;
         this.actiu = actiu;
         this.dataCreacio = dataCreacio;
         this.dataAnulacio = dataAnulacio;
@@ -31,10 +30,10 @@ public class WaypointDades {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("WaypointDades{");
+        final StringBuilder sb = new StringBuilder("RutaDades{");
         sb.append("id=").append(id);
         sb.append(", nom='").append(nom).append('\'');
-        sb.append(", coordenades=").append(Arrays.toString(coordenades));
+        sb.append(", waypoints=").append(waypoints);
         sb.append(", actiu=").append(actiu);
         sb.append(", dataCreacio=").append(dataCreacio);
         sb.append(", dataAnulacio=").append(dataAnulacio);

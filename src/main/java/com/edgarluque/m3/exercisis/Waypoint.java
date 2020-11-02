@@ -1,10 +1,12 @@
-package com.edgarluque.m3.exercisis_list;
+package com.edgarluque.m3.exercisis;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Waypoint {
     public static ComprovacioRendiment inicialitzarComprovacioRendiment() {
@@ -13,7 +15,7 @@ public class Waypoint {
 
     public static ComprovacioRendiment comprovarRendimentInicialitzacio(int numObjACrear,
                                                                         ComprovacioRendiment comprovacioRendimentTmp) {
-        if(comprovacioRendimentTmp == null) {
+        if (comprovacioRendimentTmp == null) {
             System.out.println("ComprovacioRendiment no esta inicialitzada.");
             return null;
         }
@@ -55,7 +57,7 @@ public class Waypoint {
     }
 
     public static ComprovacioRendiment comprovarRendimentInsercio(ComprovacioRendiment comprovacioRendimentTmp) {
-        if(comprovacioRendimentTmp == null) {
+        if (comprovacioRendimentTmp == null) {
             System.out.println("ComprovacioRendiment no esta inicialitzada.");
             return null;
         }
@@ -152,16 +154,114 @@ public class Waypoint {
     public static ComprovacioRendiment modificarWaypoints(ComprovacioRendiment comprovacioRendimentTmp) {
         System.out.println("----Apartat 1-----");
         List<Integer> idsPerArrayList = new ArrayList<>();
-        for(int i = 0, n = comprovacioRendimentTmp.llistaArrayList.size(); i < n; i++) {
+        for (int i = 0, n = comprovacioRendimentTmp.llistaArrayList.size(); i < n; i++) {
             idsPerArrayList.add(i);
         }
         System.out.println("S'ha inicialitzat idsPerArrayList amb " + comprovacioRendimentTmp.llistaArrayList.size() + " nombres.");
         System.out.println("Primer valor te un: " + idsPerArrayList.get(0));
         System.out.println("L'ultim valor te un: " + idsPerArrayList.get(idsPerArrayList.size() - 1));
+
+        // Apartat 2
+        System.out.println("---Apartat 2---");
+        for (Integer id : idsPerArrayList) {
+            System.out.printf("Abans del canvi (i=%d): %d\n", id, comprovacioRendimentTmp.llistaArrayList.get(id).getId());
+            comprovacioRendimentTmp.llistaArrayList.get(id).setId(id);
+            System.out.printf("Despres del canvi (i=%d): %d\n\n", id, comprovacioRendimentTmp.llistaArrayList.get(id).getId());
+        }
+
+        System.out.println("---Apartat 3.1 (bucle for)---");
+        for (WaypointDades dades : comprovacioRendimentTmp.llistaArrayList) {
+            System.out.printf("ID = %d, nom = %s\n", dades.getId(), dades.getNom());
+        }
+
+        System.out.println();
+        System.out.println("---Apartat 3.2 (iterador)---");
+        for (Iterator<WaypointDades> it = comprovacioRendimentTmp.llistaArrayList.iterator(); it.hasNext(); ) {
+            WaypointDades dades = it.next();
+            System.out.printf("ID = %d, nom = %s\n", dades.getId(), dades.getNom());
+        }
+
+        System.out.println();
+        System.out.println("---Apartat 4---");
+        System.out.printf("La llista linked list s'esborrara amb %d elements.\n", comprovacioRendimentTmp.llistaLinkedList.size());
+        comprovacioRendimentTmp.llistaLinkedList.clear();
+        System.out.println("Esborrada.");
+
+        comprovacioRendimentTmp.llistaLinkedList.addAll(comprovacioRendimentTmp.llistaArrayList);
+        System.out.println("Copiat els elements de llistaArrayList a llistaLinkedList: " + comprovacioRendimentTmp.llistaLinkedList.size());
+
+        System.out.println("---Apartat 5.1 (bucle for)---");
+        for(WaypointDades dades: comprovacioRendimentTmp.llistaArrayList) {
+            if(dades.getId() > 5) {
+                dades.setNom("Òrbita de Mart.");
+                System.out.println("Modificat waypoint amb id = " + dades.getId());
+            }
+        }
+
+        System.out.println();
+        System.out.println("---Apartat 5.1 (comprovacio)---");
+        for(int i = 0; i < comprovacioRendimentTmp.llistaArrayList.size(); i++) {
+            WaypointDades dades = comprovacioRendimentTmp.llistaArrayList.get(i);
+            System.out.printf("El waypoint amb id = %d te el nom = %s\n", dades.getId(), dades.getNom());
+        }
+
+        System.out.println("---Apartat 5.2 (bucle for)---");
+        for(WaypointDades dades: comprovacioRendimentTmp.llistaLinkedList) {
+            if(dades.getId() < 5) {
+                dades.setNom("Punt Lagrange entre la Terra i la LLuna");
+                System.out.println("Modificat waypoint amb id = " + dades.getId());
+            }
+        }
+
+        System.out.println();
+        System.out.println("---Apartat 5.2(comprovacio)---");
+        for(int i = 0; i < comprovacioRendimentTmp.llistaLinkedList.size(); i++) {
+            WaypointDades dades = comprovacioRendimentTmp.llistaLinkedList.get(i);
+            System.out.printf("El waypoint amb id = %d te el nom = %s\n", dades.getId(), dades.getNom());
+        }
+
         return comprovacioRendimentTmp;
     }
 
     public static ComprovacioRendiment esborrarWaypoint(ComprovacioRendiment comprovacioRendimentTmp) {
+        for(WaypointDades dades: comprovacioRendimentTmp.llistaArrayList) {
+            if(dades.getId() < 6) {
+                comprovacioRendimentTmp.llistaArrayList.remove(dades);
+            }
+        }
+
+        System.out.println("---Apartat 2 iterator---");
+        for (Iterator<WaypointDades> it = comprovacioRendimentTmp.llistaLinkedList.iterator(); it.hasNext(); ) {
+            WaypointDades dades = it.next();
+
+            if(dades.getId() > 4) {
+                System.out.println("Esborrat waypoint amb id = " + dades.getId());
+                it.remove();
+            }
+        }
+
+        System.out.println("---Apartat 2 comprovacio---");
+        for(WaypointDades dades: comprovacioRendimentTmp.llistaArrayList) {
+            System.out.printf("El waypoint amb id = %d te el nom = %s\n", dades.getId(), dades.getNom());
+        }
+
+        System.out.println("---Apartat 3 listiterator---");
+        for (ListIterator<WaypointDades> it = comprovacioRendimentTmp.llistaLinkedList.listIterator(1); it.hasNext(); ) {
+            WaypointDades dades = it.next();
+
+            if(dades.getId() == 2) {
+                System.out.println("Esborrat waypoint amb id = " + dades.getId());
+                it.remove();
+            }
+        }
+
+        System.out.println("---Apartat 3 comprovacio---");
+        for (ListIterator<WaypointDades> it =
+             comprovacioRendimentTmp.llistaLinkedList.listIterator(comprovacioRendimentTmp.llistaLinkedList.size()); it.hasPrevious(); ) {
+            WaypointDades dades = it.previous();
+
+            System.out.printf("El waypoint amb id = %d te el nom = %s\n", dades.getId(), dades.getNom());
+        }
         return comprovacioRendimentTmp;
     }
 }
