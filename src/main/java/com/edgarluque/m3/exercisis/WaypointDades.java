@@ -1,6 +1,10 @@
 package com.edgarluque.m3.exercisis;
 
+import llibreries.varies.Data;
+
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class WaypointDades {
@@ -29,18 +33,39 @@ public class WaypointDades {
         this.dataModificacio = dataModificacio;
     }
 
+    public void printCoordenades() {
+        System.out.printf("Coordenades: (%d, %d, %d)\n", coordenades[0], coordenades[1], coordenades[2]);
+    }
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("WaypointDades{");
-        sb.append("id=").append(id);
-        sb.append(", nom='").append(nom).append('\'');
-        sb.append(", coordenades=").append(Arrays.toString(coordenades));
-        sb.append(", actiu=").append(actiu);
-        sb.append(", dataCreacio=").append(dataCreacio);
-        sb.append(", dataAnulacio=").append(dataAnulacio);
-        sb.append(", dataModificacio=").append(dataModificacio);
-        sb.append('}');
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        final StringBuilder sb = new StringBuilder();
+        sb.append("WAYPOINT ").append(id).append(System.lineSeparator());
+        sb.append("\tnom = ").append(nom).append(System.lineSeparator());
+        sb.append("\tcoordenades(x, y, z) = ").append(String.format("(%d,%d,%d)", coordenades[0], coordenades[1], coordenades[2]))
+                .append(String.format(" (distancia = %d)", distanciaATerra())).append(System.lineSeparator());
+        sb.append("\tactiu = ").append(Boolean.toString(actiu)).append(System.lineSeparator());
+        sb.append("\tdataCreacio = ").append(Data.formatDate(dataCreacio)).append(System.lineSeparator());
+        sb.append("\tdataAnulacio = ").append(Data.formatDate(dataAnulacio)).append(System.lineSeparator());
+        sb.append("\tdataModificacio = ").append(Data.formatDate(dataModificacio)).append(System.lineSeparator());
         return sb.toString();
+    }
+
+    public int distanciaATerra() {
+        return (int) (Math.pow(coordenades[0], 2) + Math.pow(coordenades[1], 2) + Math.pow(coordenades[2], 2));
+    }
+
+    public int compareTo(WaypointDades dades) {
+        double dist1 = distanciaATerra();
+        double dist2 = dades.distanciaATerra();
+
+        if(dist1 < dist2)
+            return -1;
+        if(dist1 > dist2)
+            return 1;
+
+        return nom.compareTo(dades.getNom());
     }
 
     public int getId() {
@@ -57,5 +82,13 @@ public class WaypointDades {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public int[] getCoordenades() {
+        return coordenades;
+    }
+
+    public void setCoordenades(int[] coordenades) {
+        this.coordenades = coordenades;
     }
 }
