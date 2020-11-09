@@ -21,9 +21,9 @@ public class Krona {
         menu.addLine("8. Llistar els waypoints de l'ArrayList que es trobin a certa distancia de la terra.", false);
         menu.addEmptyLine();
         menu.addLine("10. Inicialitzar una ruta.", false);
-        menu.addLine("10. Visualitzar una ruta.", false);
-        menu.addLine("10. Invertir una ruta.", false);
-        menu.addLine("10. Existeix el waypoint 'Òrbita de Júpiter REPETIDA' en la ruta?.", false);
+        menu.addLine("11. Visualitzar una ruta.", false);
+        menu.addLine("12. Invertir una ruta.", false);
+        menu.addLine("13. Existeix el waypoint 'Òrbita de Júpiter REPETIDA' en la ruta?.", false);
         menu.addEmptyLine();
         menu.addLine("50. Tornar al menú pare (PNS-24 Puma)", false);
         menu.addSeparator();
@@ -71,6 +71,22 @@ public class Krona {
                     break;
                 case 8:
                     Waypoint.waypointsACertaDistanciaMaxDeLaTerra(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 10:
+                    comprovacioRendiment = RutaDades.inicialitzarRuta(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 11:
+                    RutaDades.visualitzarRuta(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 12:
+                    RutaDades.invertirRuta(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 13:
+                    RutaDades.existeixWaypointEnRuta(comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 50:
