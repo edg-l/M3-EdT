@@ -1,6 +1,6 @@
 package com.edgarluque.m3.exercisis;
 
-import llibreries.varies.Cadena;
+import com.edgarluque.m3.llibreries.varies.Cadena;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

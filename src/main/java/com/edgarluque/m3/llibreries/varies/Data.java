@@ -1,4 +1,4 @@
-package llibreries.varies;
+package com.edgarluque.m3.llibreries.varies;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

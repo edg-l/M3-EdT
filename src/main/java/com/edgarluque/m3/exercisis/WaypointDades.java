@@ -1,11 +1,9 @@
 package com.edgarluque.m3.exercisis;
 
-import llibreries.varies.Data;
+import com.edgarluque.m3.llibreries.varies.Data;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
 public class WaypointDades {
     private int id;

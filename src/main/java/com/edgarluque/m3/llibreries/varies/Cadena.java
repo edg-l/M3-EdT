@@ -1,4 +1,4 @@
-package llibreries.varies;
+package com.edgarluque.m3.llibreries.varies;
 
 public class Cadena {
     public static boolean stringIsInt(String cadena) {
