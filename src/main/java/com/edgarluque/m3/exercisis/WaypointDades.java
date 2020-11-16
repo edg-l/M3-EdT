@@ -44,9 +44,9 @@ public class WaypointDades {
         sb.append("\tcoordenades(x, y, z) = ").append(String.format("(%d,%d,%d)", coordenades[0], coordenades[1], coordenades[2]))
                 .append(String.format(" (distancia = %d)", distanciaATerra())).append(System.lineSeparator());
         sb.append("\tactiu = ").append(Boolean.toString(actiu)).append(System.lineSeparator());
-        sb.append("\tdataCreacio = ").append(Data.formatDate(dataCreacio)).append(System.lineSeparator());
-        sb.append("\tdataAnulacio = ").append(Data.formatDate(dataAnulacio)).append(System.lineSeparator());
-        sb.append("\tdataModificacio = ").append(Data.formatDate(dataModificacio)).append(System.lineSeparator());
+        sb.append("\tdataCreacio = ").append(Data.imprimirData(dataCreacio)).append(System.lineSeparator());
+        sb.append("\tdataAnulacio = ").append(Data.imprimirData(dataAnulacio)).append(System.lineSeparator());
+        sb.append("\tdataModificacio = ").append(Data.imprimirData(dataModificacio)).append(System.lineSeparator());
         return sb.toString();
     }
 

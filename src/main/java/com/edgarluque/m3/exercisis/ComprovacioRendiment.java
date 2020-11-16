@@ -11,6 +11,7 @@ public class ComprovacioRendiment {
     List<WaypointDades> llistaLinkedList;
     WaypointDades wtmp;
     public Deque<WaypointDades> pilaWaypoints;
+    public ArrayList<RutaDades> llistaRutes;
 
     public ComprovacioRendiment() {
         coordenadesTmp = new int[] {0,0,0};
@@ -18,5 +19,6 @@ public class ComprovacioRendiment {
         llistaLinkedList = new LinkedList<>();
         wtmp = null;
         pilaWaypoints = new LinkedList<>();
+        llistaRutes = new ArrayList<>();
     }
 }

@@ -96,6 +96,26 @@ public class Krona {
                     Ruta.existeixWaypointEnRuta(comprovacioRendiment);
                     waitForInput = true;
                     break;
+                case 20:
+                    comprovacioRendiment = Ruta.inicialitzaLListaRutes(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 21:
+                    Ruta.setUnio(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 22:
+                    Ruta.setInterseccio(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 23:
+                    Ruta.setResta(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 24:
+                    Ruta.crearSetOrdenatDeRutes(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
                 case 50:
                     running = false;
                     break;

@@ -1,14 +1,9 @@
 package com.edgarluque.m3.exercisis;
 
-import com.edgarluque.m3.llibreries.varies.Data;
-
 import java.time.LocalDateTime;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
-public class RutaDades {
+public class RutaDades implements Comparable<RutaDades> {
     private int id;
     private String nom;
     private ArrayList<Integer> waypoints;
@@ -33,6 +28,20 @@ public class RutaDades {
         this.dataModificacio = dataModificacio;
     }
 
+    public int getId() {
+        return id;
+    }
+
+
+
+    public ArrayList<Integer> getWaypoints() {
+        return waypoints;
+    }
+
+    public void imprimir() {
+        System.out.println(nom + ": waypoints" + waypoints);
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("RutaDades{");
@@ -45,5 +54,16 @@ public class RutaDades {
         sb.append(", dataModificacio=").append(dataModificacio);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(RutaDades rutaDades) {
+        if(waypoints.size() == rutaDades.waypoints.size()) {
+            HashSet<Integer> wp = new HashSet<>(waypoints);
+            wp.removeAll(rutaDades.waypoints);
+            if(wp.isEmpty())
+                return 0;
+        }
+        return Integer.compare(rutaDades.getId(), id);
     }
 }
