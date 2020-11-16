@@ -16,5 +16,7 @@ public class ComprovacioRendiment {
         coordenadesTmp = new int[] {0,0,0};
         llistaArrayList = new ArrayList<>();
         llistaLinkedList = new LinkedList<>();
+        wtmp = null;
+        pilaWaypoints = new LinkedList<>();
     }
 }
