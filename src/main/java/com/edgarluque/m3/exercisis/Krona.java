@@ -25,6 +25,13 @@ public class Krona {
         menu.addLine("12. Invertir una ruta.", false);
         menu.addLine("13. Existeix el waypoint 'Òrbita de Júpiter REPETIDA' en la ruta?.", false);
         menu.addEmptyLine();
+        menu.addLine("20. Inicialitzar llista de rutes", false);
+        menu.addLine("21. Ficar tots els waypoints en un set", false);
+        menu.addLine("22. Waypoints que estan en totes les rutes", false);
+        menu.addLine("23. Waypoints que estan en la ruta A i no en la ruta B", false);
+        menu.addLine("24. Ordenar les rutes per waypoints i ID (el id de mes gran a mes petit)", false);
+        menu.addLine("25. ", false);
+        menu.addEmptyLine();
         menu.addLine("50. Tornar al menú pare (PNS-24 Puma)", false);
         menu.addSeparator();
 
@@ -74,19 +81,19 @@ public class Krona {
                     waitForInput = true;
                     break;
                 case 10:
-                    comprovacioRendiment = RutaDades.inicialitzarRuta(comprovacioRendiment);
+                    comprovacioRendiment = Ruta.inicialitzarRuta(comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 11:
-                    RutaDades.visualitzarRuta(comprovacioRendiment);
+                    Ruta.visualitzarRuta(comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 12:
-                    RutaDades.invertirRuta(comprovacioRendiment);
+                    Ruta.invertirRuta(comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 13:
-                    RutaDades.existeixWaypointEnRuta(comprovacioRendiment);
+                    Ruta.existeixWaypointEnRuta(comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 50:
