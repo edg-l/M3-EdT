@@ -1,6 +1,6 @@
 package com.edgarluque.m3.exercisis;
 
-import llibreries.varies.Data;
+import com.edgarluque.m3.llibreries.varies.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayDeque;
@@ -81,7 +81,7 @@ public class RutaDades {
 
     public static void visualitzarRuta(ComprovacioRendiment tmp) {
         System.out.println("Ruta formada per waypoints:");
-        for(WaypointDades w: tmp.pilaWaypoints) {
+        for (WaypointDades w : tmp.pilaWaypoints) {
             System.out.println(w.toString());
         }
     }
@@ -89,12 +89,12 @@ public class RutaDades {
     public static void invertirRuta(ComprovacioRendiment tmp) {
         Deque<WaypointDades> inversa = new ArrayDeque<>(tmp.pilaWaypoints.size());
 
-        while(!tmp.pilaWaypoints.isEmpty()) {
+        while (!tmp.pilaWaypoints.isEmpty()) {
             inversa.push(tmp.pilaWaypoints.pop());
         }
 
         System.out.println("Pila inversa:");
-        for(WaypointDades w: inversa) {
+        for (WaypointDades w : inversa) {
             System.out.println(w.toString());
         }
 
@@ -102,11 +102,11 @@ public class RutaDades {
     }
 
     public static void existeixWaypointEnRuta(ComprovacioRendiment tmp) {
-        if(tmp.wtmp == null)
+        if (tmp.wtmp == null)
             return;
 
-        for(WaypointDades w: tmp.pilaWaypoints) {
-            if(tmp.wtmp == w) {
+        for (WaypointDades w : tmp.pilaWaypoints) {
+            if (tmp.wtmp == w) {
                 System.out.println("S'ha trobut el waypoint wtmp.");
                 return;
             }
