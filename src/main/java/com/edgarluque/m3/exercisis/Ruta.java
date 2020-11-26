@@ -3,7 +3,6 @@ package com.edgarluque.m3.exercisis;
 import com.edgarluque.m3.llibreries.varies.Cadena;
 import com.edgarluque.m3.llibreries.varies.Data;
 
-import javax.xml.transform.stream.StreamResult;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -177,6 +176,123 @@ public class Ruta {
 
         for(RutaDades dades: rutes) {
             dades.imprimir();
+        }
+    }
+
+    public static void crearLinkedHashMapDeRutes(ComprovacioRendiment tmp) {
+        for(RutaDades dades : tmp.llistaRutes) {
+            tmp.mapaLinkedRutes.put(dades.getId(), dades);
+        }
+
+        long fromTemps;
+        long temps1, temps2, temps3;
+
+        System.out.println("Primera forma: entrySet");
+        fromTemps = System.nanoTime();
+        Set entSet = tmp.mapaLinkedRutes.entrySet();
+        Iterator it1 = entSet.iterator();
+        while (it1.hasNext()) {
+            Map.Entry entry = (Map.Entry) it1.next();
+            System.out.printf("Clau = %s:\n%s", entry.getKey().toString(), entry.getValue().toString());
+        }
+        temps1 = (System.nanoTime() - fromTemps) / 1000;
+
+        System.out.println();
+        System.out.println("Segona forma: keySet");
+
+        fromTemps = System.nanoTime();
+        Iterator<Integer> it2 = tmp.mapaLinkedRutes.keySet().iterator();
+        while (it2.hasNext()) {
+            int key = it2.next();
+            System.out.printf("Clau = %s:\n%s", key, tmp.mapaLinkedRutes.get(key));
+        }
+        temps2 = (System.nanoTime() - fromTemps) / 1000;
+
+        System.out.println();
+        System.out.println("Tercera forma forma: entrySet amb for");
+
+        fromTemps = System.nanoTime();
+        for (Map.Entry<Integer, RutaDades> ent : tmp.mapaLinkedRutes.entrySet()) {
+            System.out.printf("Clau = %s:\n%s", ent.getKey().toString(), ent.getValue().toString());
+        }
+        temps3 = (System.nanoTime() - fromTemps) / 1000;
+
+        System.out.println("Temps 1a: " + temps1);
+        System.out.println("Temps 2a: " + temps2);
+        System.out.println("Temps 3r: " + temps3);
+    }
+
+    public static void visualitzarRutesDelMapAmbUnWaypointConcret(ComprovacioRendiment tmp) {
+        int num = -1;
+        Scanner sc = new Scanner(System.in);
+        while (num < 0) {
+            System.out.println("Numero del waypoint a buscar");
+            String v = sc.next();
+
+            if(!Cadena.stringIsInt(v)) {
+                System.out.println("Ha de ser un integer.");
+                continue;
+            }
+
+            num = Integer.parseInt(v);
+        }
+
+        System.out.println("Rutas que contenen waypoint " + num);
+
+        for (Map.Entry<Integer, RutaDades> ent : tmp.mapaLinkedRutes.entrySet()) {
+            RutaDades ruta = ent.getValue();
+
+            if(ruta.getWaypoints().contains(num)) {
+                System.out.println(ruta);
+            }
+        }
+    }
+
+    public static void esborrarRutesDelMapAmbUnWaypointConcret(ComprovacioRendiment tmp) {
+        int num = Cadena.getInt("Numero del waypoint a buscar");
+
+        System.out.println("Rutas que contenen waypoint " + num);
+
+        Set set = tmp.mapaLinkedRutes.entrySet();
+        Iterator it = set.iterator();
+        while (it.hasNext()) {
+            Map.Entry ent = (Map.Entry) it.next();
+
+            RutaDades ruta = (RutaDades)ent.getValue();
+
+            if(ruta.getWaypoints().contains(num)) {
+                System.out.println(ruta);
+                it.remove();
+            }
+        }
+    }
+
+    public static void visualitzarUnaRutaDelMap(ComprovacioRendiment tmp) {
+        int id = Cadena.getInt("Escriu el id de la ruta a buscar:");
+
+        if(tmp.mapaLinkedRutes.containsKey(id)) {
+            System.out.println(tmp.mapaLinkedRutes.get(id));
+        }
+    }
+
+    public static void ordenarRutesMapPerID(ComprovacioRendiment tmp) {
+        SortedMap<Integer, RutaDades> treeRutas = new TreeMap<>(tmp.mapaLinkedRutes);
+
+        for(Map.Entry<Integer, RutaDades> ent: treeRutas.entrySet()) {
+            System.out.println(ent.getKey() + " " + ent.getValue());
+        }
+    }
+
+    public static void ordenarRutesMapPerWaypointsAndID(ComprovacioRendiment tmp) {
+        SortedMap<Integer, RutaDades> treeRutas = new TreeMap(new Comparator<RutaDades>() {
+            @Override
+            public int compare(RutaDades o, RutaDades t1) {
+                return o.compareTo(t1);
+            }
+        });
+
+        for(Map.Entry<Integer, RutaDades> ent: treeRutas.entrySet()) {
+            System.out.println(ent.getKey() + " " + ent.getValue());
         }
     }
 }

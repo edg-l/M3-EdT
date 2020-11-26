@@ -66,4 +66,8 @@ public class RutaDades implements Comparable<RutaDades> {
         }
         return Integer.compare(rutaDades.getId(), id);
     }
+
+    public static int compare(RutaDades a, RutaDades b) {
+        return a.compareTo(b);
+    }
 }

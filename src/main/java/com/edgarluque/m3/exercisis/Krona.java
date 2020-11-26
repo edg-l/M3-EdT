@@ -32,7 +32,12 @@ public class Krona {
         menu.addLine("24. Ordenar les rutes per waypoints i ID (el id de mes gran a mes petit)", false);
         menu.addLine("25. ", false);
         menu.addEmptyLine();
-        menu.addLine("30.", false);
+        menu.addLine("30. Crear un map de rutes i visualitzar-lo", false);
+        menu.addLine("31. Visualitzar totes les rutes del map que tinguin un waypoint concret", false);
+        menu.addLine("32. Esborrar totes les rutes del map que itinguin un waypoint concret", false);
+        menu.addLine("33. Visualitzar les dades d'una ruta", false);
+        menu.addLine("34. Ordenar les rutes del map per id", false);
+        menu.addLine("35. Ordenar les rutes del map per waypoints i per id", false);
         menu.addEmptyLine();
         menu.addLine("50. Tornar al menú pare (PNS-24 Puma)", false);
         menu.addSeparator();
@@ -116,6 +121,30 @@ public class Krona {
                     break;
                 case 24:
                     Ruta.crearSetOrdenatDeRutes(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 30:
+                    Ruta.crearLinkedHashMapDeRutes(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 31:
+                    Ruta.visualitzarRutesDelMapAmbUnWaypointConcret(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 32:
+                    Ruta.esborrarRutesDelMapAmbUnWaypointConcret(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 33:
+                    Ruta.visualitzarUnaRutaDelMap(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 34:
+                    Ruta.ordenarRutesMapPerID(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 35:
+                    Ruta.ordenarRutesMapPerWaypointsAndID(comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 50:

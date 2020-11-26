@@ -1,9 +1,6 @@
 package com.edgarluque.m3.exercisis;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class ComprovacioRendiment {
     int[] coordenadesTmp = null;
@@ -12,6 +9,7 @@ public class ComprovacioRendiment {
     WaypointDades wtmp;
     public Deque<WaypointDades> pilaWaypoints;
     public ArrayList<RutaDades> llistaRutes;
+    public LinkedHashMap<Integer, RutaDades> mapaLinkedRutes;
 
     public ComprovacioRendiment() {
         coordenadesTmp = new int[] {0,0,0};
@@ -20,5 +18,6 @@ public class ComprovacioRendiment {
         wtmp = null;
         pilaWaypoints = new LinkedList<>();
         llistaRutes = new ArrayList<>();
+        mapaLinkedRutes = new LinkedHashMap<>();
     }
 }
