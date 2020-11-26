@@ -10,10 +10,10 @@ public class WaypointDades {
     private String nom;
     private int[] coordenades;
     private boolean actiu;
-
     private LocalDateTime dataCreacio;
     private LocalDateTime dataAnulacio;
     private LocalDateTime dataModificacio;
+    private int tipus;
 
     public WaypointDades(int id,
                          String nom,
@@ -26,6 +26,24 @@ public class WaypointDades {
         this.nom = nom;
         this.coordenades = coordenades;
         this.actiu = actiu;
+        this.dataCreacio = dataCreacio;
+        this.dataAnulacio = dataAnulacio;
+        this.dataModificacio = dataModificacio;
+        this.tipus = 0;
+    }
+
+    public WaypointDades(int id, String nom,
+                         int[] coordenades,
+                         boolean actiu,
+                         LocalDateTime dataCreacio,
+                         LocalDateTime dataAnulacio,
+                         LocalDateTime dataModificacio,
+                         int tipus) {
+        this.id = id;
+        this.nom = nom;
+        this.coordenades = coordenades;
+        this.actiu = actiu;
+        this.tipus = tipus;
         this.dataCreacio = dataCreacio;
         this.dataAnulacio = dataAnulacio;
         this.dataModificacio = dataModificacio;
@@ -58,9 +76,9 @@ public class WaypointDades {
         double dist1 = distanciaATerra();
         double dist2 = dades.distanciaATerra();
 
-        if(dist1 < dist2)
+        if (dist1 < dist2)
             return -1;
-        if(dist1 > dist2)
+        if (dist1 > dist2)
             return 1;
 
         return nom.compareTo(dades.getNom());
@@ -88,5 +106,13 @@ public class WaypointDades {
 
     public void setCoordenades(int[] coordenades) {
         this.coordenades = coordenades;
+    }
+
+    public int getTipus() {
+        return tipus;
+    }
+
+    public LocalDateTime getDataCreacio() {
+        return dataCreacio;
     }
 }

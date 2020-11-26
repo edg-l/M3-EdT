@@ -1,13 +1,18 @@
 package com.edgarluque.m3.exercisis;
 
 import com.edgarluque.m3.llibreries.varies.Cadena;
+import com.edgarluque.m3.llibreries.varies.Data;
 
+import java.text.Collator;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Waypoint {
+
     public static ComprovacioRendiment inicialitzarComprovacioRendiment() {
         return new ComprovacioRendiment();
     }
@@ -334,6 +339,226 @@ public class Waypoint {
 
         for (WaypointDades w : dades) {
             System.out.println(w.toString());
+        }
+    }
+
+    public static void menu40(ComprovacioRendiment tmp) {
+        if(!tmp.llistaWaypoints.isEmpty())
+            tmp.llistaWaypoints.clear();
+
+        tmp.llistaWaypoints.add(new WaypointDades(0, "Òrbita de la Terra", new int[] {0,0,0}, true,
+                LocalDateTime.parse("21-10-2020 01:10", Data.FORMATTER), null,
+                LocalDateTime.parse("22-10-2020 23:55", Data.FORMATTER), 0));
+
+        tmp.llistaWaypoints.add(new WaypointDades(1, "Punt Lagrange Terra-LLuna", new int[] {1,1,1}, true,
+                LocalDateTime.parse("21-10-2020 01:00", Data.FORMATTER), null,
+                LocalDateTime.parse("22-10-2020 23:55", Data.FORMATTER),6));
+
+        tmp.llistaWaypoints.add(new WaypointDades(2, "Òrbita de la LLuna", new int[] {2,2,2}, true,
+                LocalDateTime.parse("21-10-2020 00:50", Data.FORMATTER), null,
+                LocalDateTime.parse("22-10-2020 23:55", Data.FORMATTER),1));
+
+        tmp.llistaWaypoints.add(new WaypointDades(3, "Òrbita de Mart", new int[] {3,3,3}, true,
+                LocalDateTime.parse("21-10-2020 00:40", Data.FORMATTER), null,
+                LocalDateTime.parse("22-10-2020 23:55", Data.FORMATTER),0));
+
+        tmp.llistaWaypoints.add(new WaypointDades(4, "Òrbita de Júpiter", new int[] {4,4,4}, true,
+                LocalDateTime.parse("21-10-2020 00:30", Data.FORMATTER), null,
+                LocalDateTime.parse("22-10-2020 23:55", Data.FORMATTER),0));
+
+        tmp.llistaWaypoints.add(new WaypointDades(5, "Punt Lagrange Júpiter-Europa", new int[] {5,5,5}, true,
+                LocalDateTime.parse("21-10-2020 00:20", Data.FORMATTER), null,
+                LocalDateTime.parse("22-10-2020 23:55", Data.FORMATTER),6));
+
+        tmp.llistaWaypoints.add(new WaypointDades(6, "Òrbita de Europa", new int[] {6,6,6}, true,
+                LocalDateTime.parse("21-10-2020 00:10", Data.FORMATTER), null,
+                LocalDateTime.parse("22-10-2020 23:55", Data.FORMATTER),0));
+
+        tmp.llistaWaypoints.add(new WaypointDades(7, "Òrbita de Venus", new int[] {7,7,7}, true,
+                LocalDateTime.parse("21-10-2020 00:01", Data.FORMATTER), null,
+                LocalDateTime.parse("22-10-2020 23:55", Data.FORMATTER),0));
+    }
+
+    public static void menu41(ComprovacioRendiment tmp) {
+        int id = 0;
+        for(WaypointDades dades: tmp.llistaWaypoints) {
+            if(dades.getId() > id)
+                id = dades.getId();
+        }
+        id++;
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Nom del waypoint:");
+        String nom = sc.nextLine();
+
+        int[] coordenades = new int[3];
+        System.out.println("Introdueix les coordenades, 3 numeros separats per espai:");
+        do {
+            String numeros = sc.nextLine();
+            System.out.println("numeros:");
+            System.out.println(numeros);
+            String[] nums = numeros.split(" ");
+            if(nums.length != 3) {
+                System.out.println("Has de pasar 3 numeros separats per espais.");
+                continue;
+            }
+
+            boolean isOk = true;
+            for(int i = 0; i < 3; i++) {
+                if(!Cadena.stringIsInt(nums[i])) {
+                    System.out.println("Has de pasar numeros valids.");
+                    isOk = false;
+                    break;
+                }
+                coordenades[i] = Integer.parseInt(nums[i]);
+            }
+
+            if(isOk)
+                break;
+        } while (true);
+
+        Collator comp = Collator.getInstance();
+        comp.setStrength(Collator.PRIMARY);
+
+        boolean actiu = false;
+
+        do {
+            System.out.println("Esta actiu (true/false): ");
+            String res = sc.nextLine();
+
+            if(comp.compare(res, "true") == 0) {
+                actiu = true;
+                break;
+            }
+            else if(comp.compare(res, "false") == 0) {
+                actiu = false;
+                break;
+            }
+            else {
+                System.out.println("Entrada no valida.");
+            }
+        } while (true);
+
+        LocalDateTime dataCreacio = LocalDateTime.now();
+        LocalDateTime dataModificacio = LocalDateTime.now();
+
+        LocalDateTime dataAnulacio = null;
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        do {
+            System.out.println("Data anulacio (DD-MM-AAAA):");
+            String res = sc.nextLine();
+
+            if(Data.esData(res)) {
+                dataAnulacio = LocalDate.parse(res, formatter).atStartOfDay();
+                break;
+            } else {
+                System.out.println("Entrada no valida.");
+            }
+        } while (true);
+
+        for(int i = 0; i < Constants.TIPUS_WAYPOINT.length; i++) {
+            System.out.println("ID: " + i + " - " + Constants.TIPUS_WAYPOINT[i]);
+        }
+
+        int tipus = 0;
+
+        do {
+            System.out.println("Introdueix id del tipus:");
+            int tipusTmp = sc.nextInt();
+
+            if(tipusTmp < 0 || tipusTmp >= Constants.TIPUS_WAYPOINT.length) {
+                System.out.println("Tipus invalid.");
+            }
+            else {
+                tipus = tipusTmp;
+                break;
+            }
+        } while (true);
+
+        tmp.llistaWaypoints.add(new WaypointDades(
+                id, nom, coordenades, actiu, dataCreacio, dataAnulacio, dataModificacio, tipus
+        ));
+        System.out.println("Waypoint afegit.");
+    }
+
+    public static void menu42(ComprovacioRendiment tmp) {
+        System.out.println("Tipus de waypoints:");
+
+        for(int i = 0; i < Constants.TIPUS_WAYPOINT.length; i++) {
+            System.out.println("ID: " + i + " - " + Constants.TIPUS_WAYPOINT[i]);
+        }
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introdueix el tipus de waypoint:");
+        int tipus = sc.nextInt();
+
+        List<WaypointDades> llistaA = new ArrayList<>(tmp.llistaWaypoints);
+        List<WaypointDades> llistaB = new ArrayList<>();
+
+        Iterator<WaypointDades> it = llistaA.iterator();
+        while (it.hasNext()) {
+            WaypointDades dades = it.next();
+
+            if(dades.getTipus() == tipus) {
+                System.out.println("Eliminat waypoint amb id " + dades.getId());
+                llistaB.add(dades);
+                it.remove();
+            }
+        }
+
+        System.out.println("LListaB waypoints de tipus " + tipus);
+        for(WaypointDades dades: llistaB) {
+            System.out.printf("ID %d: %s de tipus %d\n", dades.getId(), dades.getNom(), dades.getTipus());
+        }
+    }
+
+    public static void menu43(ComprovacioRendiment tmp) {
+        Set<WaypointDades> set = new HashSet<>(tmp.llistaWaypoints);
+
+        Map<Integer, Integer> mapTipusCount = new HashMap<>();
+
+        Iterator<WaypointDades> it = set.iterator();
+        while (it.hasNext()) {
+            WaypointDades dades = it.next();
+            mapTipusCount.merge(dades.getTipus(), 1, (a, b) -> a+b);
+        }
+
+        for (Map.Entry<Integer, Integer> ent: mapTipusCount.entrySet()) {
+            System.out.printf("Tipus %d (%s): hi ha %d naus\n",
+                    ent.getKey(), Constants.TIPUS_WAYPOINT[ent.getKey()],
+                    ent.getValue());
+        }
+    }
+
+    public static void menu44(ComprovacioRendiment tmp) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nom del waypoint:");
+        String nom = sc.nextLine();
+
+        Collator comp = Collator.getInstance();
+        comp.setStrength(Collator.SECONDARY);
+
+        for(WaypointDades dades: tmp.llistaWaypoints) {
+            if(comp.compare(dades.getNom(), nom) == 0) {
+                System.out.println("id " + dades.getId() + ": " + dades.getNom());
+            }
+        }
+    }
+
+    public static void menu45(ComprovacioRendiment tmp) {
+        tmp.llistaWaypoints.sort(new Comparator<WaypointDades>() {
+            @Override
+            public int compare(WaypointDades waypointDades, WaypointDades t1) {
+                return waypointDades.getDataCreacio().compareTo(t1.getDataCreacio());
+            }
+        });
+
+        for(WaypointDades dades: tmp.llistaWaypoints) {
+            System.out.printf("ID %d: %s, data alta: %s\n",
+                    dades.getId(), dades.getNom(), dades.getDataCreacio());
         }
     }
 }

@@ -10,6 +10,8 @@ public class ComprovacioRendiment {
     public Deque<WaypointDades> pilaWaypoints;
     public ArrayList<RutaDades> llistaRutes;
     public LinkedHashMap<Integer, RutaDades> mapaLinkedRutes;
+    LinkedList<WaypointDades> llistaWaypoints = new LinkedList<>();
+    LinkedHashMap<Integer, WaypointDades> mapaWaypoints;
 
     public ComprovacioRendiment() {
         coordenadesTmp = new int[] {0,0,0};
@@ -19,5 +21,6 @@ public class ComprovacioRendiment {
         pilaWaypoints = new LinkedList<>();
         llistaRutes = new ArrayList<>();
         mapaLinkedRutes = new LinkedHashMap<>();
+        mapaWaypoints = new LinkedHashMap<>();
     }
 }

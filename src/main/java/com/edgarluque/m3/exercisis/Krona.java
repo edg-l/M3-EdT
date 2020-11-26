@@ -39,6 +39,13 @@ public class Krona {
         menu.addLine("34. Ordenar les rutes del map per id", false);
         menu.addLine("35. Ordenar les rutes del map per waypoints i per id", false);
         menu.addEmptyLine();
+        menu.addLine("40. Inicialitzar waypoints", false);
+        menu.addLine("41. Insertar un nou waypoint", false);
+        menu.addLine("42. Visualitzar ls waypoints versus un tipus", false);
+        menu.addLine("43. Visualitzar els nº de waypoints versus el seu tipus", false);
+        menu.addLine("44. Trobar waypoints versus el seu nom", false);
+        menu.addLine("45. Ordenar els waypoints per data", false);
+        menu.addEmptyLine();
         menu.addLine("50. Tornar al menú pare (PNS-24 Puma)", false);
         menu.addSeparator();
 
@@ -145,6 +152,30 @@ public class Krona {
                     break;
                 case 35:
                     Ruta.ordenarRutesMapPerWaypointsAndID(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 40:
+                    Waypoint.menu40(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 41:
+                    Waypoint.menu41(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 42:
+                    Waypoint.menu42(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 43:
+                    Waypoint.menu43(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 44:
+                    Waypoint.menu44(comprovacioRendiment);
+                    waitForInput = true;
+                    break;
+                case 45:
+                    Waypoint.menu45(comprovacioRendiment);
                     waitForInput = true;
                     break;
                 case 50:

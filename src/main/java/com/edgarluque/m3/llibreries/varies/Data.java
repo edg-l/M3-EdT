@@ -11,4 +11,13 @@ public abstract class Data {
             return "NULL";
         return FORMATTER.format(localDateTime);
     }
+
+    public static boolean esData(String dataTmp) {
+        String[] sp = dataTmp.split("-");
+        for(String num: sp) {
+            if(!Cadena.stringIsInt(num))
+                return false;
+        }
+        return true;
+    }
 }
