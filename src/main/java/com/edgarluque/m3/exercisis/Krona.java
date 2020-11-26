@@ -32,6 +32,8 @@ public class Krona {
         menu.addLine("24. Ordenar les rutes per waypoints i ID (el id de mes gran a mes petit)", false);
         menu.addLine("25. ", false);
         menu.addEmptyLine();
+        menu.addLine("30.", false);
+        menu.addEmptyLine();
         menu.addLine("50. Tornar al menú pare (PNS-24 Puma)", false);
         menu.addSeparator();
 
