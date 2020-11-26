@@ -1,5 +1,7 @@
 package com.edgarluque.m3.exercisis;
 
+import com.edgarluque.m3.llibreries.varies.Data;
+
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -44,15 +46,14 @@ public class RutaDades implements Comparable<RutaDades> {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("RutaDades{");
-        sb.append("id=").append(id);
-        sb.append(", nom='").append(nom).append('\'');
-        sb.append(", waypoints=").append(waypoints);
-        sb.append(", actiu=").append(actiu);
-        sb.append(", dataCreacio=").append(dataCreacio);
-        sb.append(", dataAnulacio=").append(dataAnulacio);
-        sb.append(", dataModificacio=").append(dataModificacio);
-        sb.append('}');
+        final StringBuilder sb = new StringBuilder("Dades de la ruta" + System.lineSeparator());
+        sb.append("id =").append(id).append(System.lineSeparator());
+        sb.append("nom = ").append(nom).append(System.lineSeparator());
+        sb.append("waypoints =").append(waypoints).append(System.lineSeparator());
+        sb.append("actiu =").append(actiu).append(System.lineSeparator());
+        sb.append("dataCreacio =").append(Data.imprimirData(dataCreacio)).append(System.lineSeparator());
+        sb.append("dataAnulacio =").append(Data.imprimirData(dataAnulacio)).append(System.lineSeparator());
+        sb.append("dataModificacio =").append(Data.imprimirData(dataModificacio));
         return sb.toString();
     }
 

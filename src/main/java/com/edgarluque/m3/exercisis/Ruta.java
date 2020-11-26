@@ -193,7 +193,7 @@ public class Ruta {
         Iterator it1 = entSet.iterator();
         while (it1.hasNext()) {
             Map.Entry entry = (Map.Entry) it1.next();
-            System.out.printf("Clau = %s:\n%s", entry.getKey().toString(), entry.getValue().toString());
+            System.out.printf("Clau = %s:\n%s\n", entry.getKey().toString(), entry.getValue().toString());
         }
         temps1 = (System.nanoTime() - fromTemps) / 1000;
 
@@ -204,7 +204,7 @@ public class Ruta {
         Iterator<Integer> it2 = tmp.mapaLinkedRutes.keySet().iterator();
         while (it2.hasNext()) {
             int key = it2.next();
-            System.out.printf("Clau = %s:\n%s", key, tmp.mapaLinkedRutes.get(key));
+            System.out.printf("Clau = %s:\n%s\n", key, tmp.mapaLinkedRutes.get(key));
         }
         temps2 = (System.nanoTime() - fromTemps) / 1000;
 
@@ -213,7 +213,7 @@ public class Ruta {
 
         fromTemps = System.nanoTime();
         for (Map.Entry<Integer, RutaDades> ent : tmp.mapaLinkedRutes.entrySet()) {
-            System.out.printf("Clau = %s:\n%s", ent.getKey().toString(), ent.getValue().toString());
+            System.out.printf("Clau = %s:\n%s\n", ent.getKey().toString(), ent.getValue().toString());
         }
         temps3 = (System.nanoTime() - fromTemps) / 1000;
 
@@ -284,12 +284,14 @@ public class Ruta {
     }
 
     public static void ordenarRutesMapPerWaypointsAndID(ComprovacioRendiment tmp) {
-        SortedMap<Integer, RutaDades> treeRutas = new TreeMap(new Comparator<RutaDades>() {
+        SortedMap<Integer, RutaDades> treeRutas = new TreeMap(new Comparator<Integer>() {
             @Override
-            public int compare(RutaDades o, RutaDades t1) {
-                return o.compareTo(t1);
+            public int compare(Integer a, Integer b) {
+                return tmp.mapaLinkedRutes.get(a).compareTo(tmp.mapaLinkedRutes.get(b));
             }
         });
+
+        treeRutas.putAll(tmp.mapaLinkedRutes);
 
         for(Map.Entry<Integer, RutaDades> ent: treeRutas.entrySet()) {
             System.out.println(ent.getKey() + " " + ent.getValue());
