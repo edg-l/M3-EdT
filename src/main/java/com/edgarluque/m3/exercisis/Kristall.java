@@ -44,7 +44,7 @@ public class Kristall {
 
             switch (opcio) {
                 case 1:
-                    menu1();
+                    Streams.menu1();
                     waitForInput = true;
                     break;
                 case 50:
@@ -67,40 +67,4 @@ public class Kristall {
         }
     }
 
-    public static void menu1() {
-        Scanner sc = new Scanner(System.in);
-        File f1, f2;
-
-        do {
-            System.out.println("Path fitxer 1:");
-            f1 = new File(sc.nextLine());
-        } while (!f1.exists());
-
-        do {
-            System.out.println("Path fitxer 2:");
-            f2 = new File(sc.nextLine());
-        } while (!f2.exists());
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(f1));
-             BufferedReader reader2 = new BufferedReader(new FileReader(f2))) {
-            int i = 1;
-            int count = 0;
-            while(reader.ready() && reader2.ready()) {
-                String l1 = reader.readLine();
-                String l2 = reader2.readLine();
-
-                System.out.println("Linia a: " + l1);
-                System.out.println("Linia b: " + l2);
-
-                if(!l1.equals(l2)) {
-                    System.out.println("Falla la linia " + i);
-                    count++;
-                }
-                i++;
-            }
-            System.out.println("Fallen " + count + " linies");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
