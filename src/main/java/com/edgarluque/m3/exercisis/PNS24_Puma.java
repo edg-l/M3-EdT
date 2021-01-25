@@ -23,7 +23,7 @@ public class PNS24_Puma
         menu.addLine("6. Sistema de visualització PPV", false);
         menu.addLine("7. Sistema de grabació Kristall", false);
         menu.addEmptyLine();
-        menu.addLine("10. Control de sondes Delta", false);
+        menu.addLine("10. Sistema logistic PAU-487", false);
         menu.addEmptyLine();
         menu.addLine("50. Tancar el sistema", false);
         menu.addEmptyLine();
