@@ -27,4 +27,36 @@ public class Encarrec_Dades {
         }
         return sb.toString();
     }
+
+    public int getIdEncarrec() {
+        return idEncarrec;
+    }
+
+    public void setIdEncarrec(int idEncarrec) {
+        this.idEncarrec = idEncarrec;
+    }
+
+    public int getIdDepartamentQueElDemana() {
+        return idDepartamentQueElDemana;
+    }
+
+    public void setIdDepartamentQueElDemana(int idDepartamentQueElDemana) {
+        this.idDepartamentQueElDemana = idDepartamentQueElDemana;
+    }
+
+    public ArrayList<Producte_Dades> getLlistaProductes() {
+        return llistaProductes;
+    }
+
+    public void setLlistaProductes(ArrayList<Producte_Dades> llistaProductes) {
+        this.llistaProductes = llistaProductes;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
 }

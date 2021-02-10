@@ -32,4 +32,36 @@ public class Producte_Dades implements Comparable<Producte_Dades>, Serializable 
         sb.append("Departament: ").append(idDepartamentQueElPotDemanar).append(System.lineSeparator());
         return sb.toString();
     }
+
+    public int getProducteId() {
+        return producteId;
+    }
+
+    public void setProducteId(int producteId) {
+        this.producteId = producteId;
+    }
+
+    public String getProducteNom() {
+        return producteNom;
+    }
+
+    public void setProducteNom(String producteNom) {
+        this.producteNom = producteNom;
+    }
+
+    public int getProductePreu() {
+        return productePreu;
+    }
+
+    public void setProductePreu(int productePreu) {
+        this.productePreu = productePreu;
+    }
+
+    public int getIdDepartamentQueElPotDemanar() {
+        return idDepartamentQueElPotDemanar;
+    }
+
+    public void setIdDepartamentQueElPotDemanar(int idDepartamentQueElPotDemanar) {
+        this.idDepartamentQueElPotDemanar = idDepartamentQueElPotDemanar;
+    }
 }

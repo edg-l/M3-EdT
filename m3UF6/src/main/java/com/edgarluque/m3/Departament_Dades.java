@@ -41,4 +41,44 @@ public class Departament_Dades {
         sb.append(encarrecTrobat.toString()).append(System.lineSeparator());
         return sb.toString();
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+
+    public List<Encarrec_Dades> getLlistaEncarrecs() {
+        return llistaEncarrecs;
+    }
+
+    public void setLlistaEncarrecs(List<Encarrec_Dades> llistaEncarrecs) {
+        this.llistaEncarrecs = llistaEncarrecs;
+    }
 }
