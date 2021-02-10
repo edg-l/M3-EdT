@@ -1,5 +1,6 @@
 package com.edgarluque.m3;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -33,6 +34,8 @@ public class PAU487 {
     
     
     public static void menuPAU487() throws IOException  {
+        File pathDb = new File(IKSRotarranConstants.pathBD);
+        pathDb.delete();
     	// Aquesta configuració és perquè gravi en cascada quan fem un update de qualsevol objecte del nostre
     	// programa (<Client_Dades>, <Encarrec_Dades> o <Producte_Dades>) que contingui altres objectes.
     	EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
@@ -109,39 +112,39 @@ public class PAU487 {
                     bloquejarPantalla();
                     break;
                 case "10":
-                	Producte.menu10(db);
+                	//Producte.menu10(db);
                 	bloquejarPantalla();
                     break;
                 case "11":
-                	Encarrec.menu11(db);
+                    //Encarrec.menu11(db);
                     bloquejarPantalla();
                     break;
                 case "12":
-                	Departament.menu12(db);
+                    //Departament.menu12(db);
                     bloquejarPantalla();
                     break;
                 case "13":
-                	Departament.menu13(db);
+                    //Departament.menu13(db);
                     bloquejarPantalla();
                     break;
                 case "14":
-                	Departament.menu14(db);
+                    //Departament.menu14(db);
                     bloquejarPantalla();
                     break;
                 case "20":
-                	Producte.menu20(db, IKSRotarranConstants.pathArxiusExportacioXML);
+                    //Producte.menu20(db, IKSRotarranConstants.pathArxiusExportacioXML);
                     bloquejarPantalla();
                     break;
                 case "21":
-                	Producte.menu21(db, IKSRotarranConstants.pathArxiusImportacioXML);
+                    //Producte.menu21(db, IKSRotarranConstants.pathArxiusImportacioXML);
                     bloquejarPantalla();
                     break;
                 case "40":
-                	Departament.menu40(db);
+                    //Departament.menu40(db);
                     bloquejarPantalla();
                     break;
                 case "41":
-                	db = Departament.menu41(db);
+                    //db = Departament.menu41(db);
                     bloquejarPantalla();
                     break; 
                 case "50":
