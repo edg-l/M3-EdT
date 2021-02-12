@@ -1,14 +1,17 @@
 package com.edgarluque.m3;
 
+import com.db4o.ObjectContainer;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Departament_Dades {
+public class Departament_Dades implements Comparable<Departament_Dades> {
     private int id;
     private String nom;
     private String email;
     private String telefon;
-    private List<Encarrec_Dades> llistaEncarrecs = new LinkedList<Encarrec_Dades>();
+    private List<Tripulant_Dades> tripulants = new ArrayList<>();
 
     public Departament_Dades(int id, String nom, String email, String telefon) {
         this.id = id;
@@ -17,29 +20,14 @@ public class Departament_Dades {
         this.telefon = telefon;
     }
 
-    @Override
-    public String toString() {
-        StringBuffer sb = new StringBuffer();
-        sb.append("Departament: ").append(id).append(System.lineSeparator());
-        sb.append("Nom: ").append(nom).append(System.lineSeparator());
-        sb.append("Email: ").append(email).append(System.lineSeparator());
-        sb.append("Telefon: ").append(telefon).append(System.lineSeparator());
-        sb.append("Encarrecs:").append(System.lineSeparator());
-        for(Encarrec_Dades e: llistaEncarrecs) {
-            sb.append(e.toString()).append(System.lineSeparator());
+    // Si l’objecte tripulant que vols afegir ja existeix en
+    // l’ArrayList a llavors fes un update i sinó, fes un add().
+    public void addTripulant(ObjectContainer db, Tripulant_Dades tripulantDades) {
+        if(!this.tripulants.contains(tripulantDades)) {
+            this.tripulants.add(tripulantDades);
+        } else {
+            db.store(tripulantDades);
         }
-        return sb.toString();
-    }
-
-    public String toStringSencill(Encarrec_Dades encarrecTrobat) {
-        StringBuffer sb = new StringBuffer();
-        sb.append("Departament: ").append(id).append(System.lineSeparator());
-        sb.append("Nom: ").append(nom).append(System.lineSeparator());
-        sb.append("Email: ").append(email).append(System.lineSeparator());
-        sb.append("Telefon: ").append(telefon).append(System.lineSeparator());
-        sb.append("Encarrec Trobat:").append(System.lineSeparator());
-        sb.append(encarrecTrobat.toString()).append(System.lineSeparator());
-        return sb.toString();
     }
 
     public int getId() {
@@ -74,11 +62,27 @@ public class Departament_Dades {
         this.telefon = telefon;
     }
 
-    public List<Encarrec_Dades> getLlistaEncarrecs() {
-        return llistaEncarrecs;
+    public List<Tripulant_Dades> getTripulants() {
+        return tripulants;
     }
 
-    public void setLlistaEncarrecs(List<Encarrec_Dades> llistaEncarrecs) {
-        this.llistaEncarrecs = llistaEncarrecs;
+    public void setTripulants(List<Tripulant_Dades> tripulants) {
+        this.tripulants = tripulants;
+    }
+
+    @Override
+    public int compareTo(Departament_Dades departament_dades) {
+        return Integer.compare(getId(), departament_dades.getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Departament_Dades{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", email='" + email + '\'' +
+                ", telefon='" + telefon + '\'' +
+                ", tripulants=" + tripulants +
+                '}';
     }
 }
